@@ -1,0 +1,5 @@
+[test]
+managenode2
+
+[prod]
+managenode1
