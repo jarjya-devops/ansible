@@ -1,0 +1,31 @@
+---
+- name: Adding Groups to target machines
+  hosts: all
+  tasks:
+    - name: Creating Dev group
+      ansible.builtin.group:
+        name: Dev
+        state: present
+
+    - name: Creating Prod group
+      ansible.builtin.group:
+        name: Prod
+        state: present
+
+- name: Adding user to test server
+  hosts: test
+  tasks:
+    - name: Adding user to Test server
+      ansible.builtin.user:
+        name: Testuser
+        state: present
+        group: Dev
+
+- name: Adding user to Prod server
+  hosts: prod
+  tasks:
+    - name: Adding user to Prod server
+      ansible.builtin.user:
+        name: Produser
+        state: present
+        group: Prod
